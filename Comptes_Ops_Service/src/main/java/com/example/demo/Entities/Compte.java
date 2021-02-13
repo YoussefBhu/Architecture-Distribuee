@@ -1,10 +1,13 @@
 package com.example.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +16,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +30,6 @@ public class Compte {
     private boolean active ;
     @Transient
     private Client client ;
-    @OneToMany(mappedBy = "compte")
-    List<Operation> operationList =  new ArrayList<Operation>();
+    @OneToMany(mappedBy = "compte",fetch = FetchType.EAGER)
+    List<Operation> operationList ;
 }

@@ -15,11 +15,12 @@ import java.util.Date;
 public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long numero ;
+    private Long numero ;
     private Date date ;
     private double montant ;
     private String type ;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Compte compte;
+
 }

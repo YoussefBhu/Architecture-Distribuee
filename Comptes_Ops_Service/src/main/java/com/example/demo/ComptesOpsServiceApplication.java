@@ -23,7 +23,8 @@ public class ComptesOpsServiceApplication {
     @Bean
     CommandLineRunner start (ClientService clientService, CompteRepository compteRepository){
         return args->{
-
+            /*Client c1 = clientService.findClientById(Integer.toUnsignedLong(1));
+            System.out.println(c1);*/
         };
     }
 }
